@@ -76,16 +76,17 @@ class TokenService {
         };
     }
 
-    async isValidAccessToken(token: string): Promise<boolean> {
+    async isValidAccessToken(token: string): Promise<AccessTokenPayload | false> {
         if (!token) return false;
         try {
             const payload = verify(token, this.ACCESS_TOKEN_SECRET) as AccessTokenPayload;
             if (payload.type !== 'access') {
                 return false;
             }
-            const userExists = await userService.findById(payload.userId);
-            if (!userExists) return false;
-            return true;
+            return payload
+            // const userExists = await userService.findById(payload.userId);
+            // if (!userExists) return false;
+            // return userExists;
         } catch (error) {
             return false;
         }
