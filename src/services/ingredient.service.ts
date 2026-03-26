@@ -31,7 +31,7 @@ class IngredientService {
 
     async update(id: number, ingredientData: Partial<Ingredient>): Promise<UpdateResult | null> {
         const res = await this.ingredientRepo.update(id, ingredientData);
-        return res
+        return await this.ingredientRepo.findOne({where: {id}});
     }
 
     async delete(id: number): Promise<boolean> {
