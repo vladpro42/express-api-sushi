@@ -4,6 +4,7 @@ import cors from "cors"
 import {corsOptions} from "./corsOprions";
 import "reflect-metadata"
 import {db} from "./db";
+import ingredientsRouter from "./routes/ingredients.router";
 
 const app = express();
 const port = 3000;
@@ -11,6 +12,7 @@ const port = 3000;
 app.use(express.json())
 app.use(cors(corsOptions));
 app.use(v1Router);
+app.use(ingredientsRouter);
 
 
 

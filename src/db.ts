@@ -1,5 +1,5 @@
 
-import { User } from "./entities/"
+import {Category, Ingredient, Product, User} from "./entities/"
 import {DataSource} from "typeorm";
 import dotenv from "dotenv";
 dotenv.config();
@@ -11,7 +11,7 @@ export const db = new DataSource({
     username: process.env.MYSQL_USERNAME,
     password: process.env.MYSQL_PASSWORD,
     database: process.env.MYSQL_DATABASE,
-    entities: [User],
+    entities: [User, Product, Category, Ingredient],
     subscribers: [],
     migrations: [],
     synchronize: true,
