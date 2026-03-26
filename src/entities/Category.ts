@@ -24,7 +24,7 @@ export class Category {
     @IsString()
     icon: string
 
-    @Column()
+    @Column({nullable: true})
     parentId: number
 
     @Column({default: true})
