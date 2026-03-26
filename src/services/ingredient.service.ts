@@ -29,7 +29,7 @@ class IngredientService {
         }
     }
 
-    async update(id: number, ingredientData: Partial<Ingredient>): Promise<UpdateResult | null> {
+    async update(id: number, ingredientData: Partial<Ingredient>): Promise<UpdateResult | Ingredient | null> {
         const res = await this.ingredientRepo.update(id, ingredientData);
         return await this.ingredientRepo.findOne({where: {id}});
     }
